@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,7 +57,30 @@ public class Saveservlet extends HttpServlet {
         request.setAttribute("startDate", startDateStr);
         request.setAttribute("endDate", sdf.format(endDate));
         request.getRequestDispatcher("result.jsp").forward(request, response);
+       
+        	Connection con;
+			try {
+				con = DBUtil.getconnection();
+        	PreparedStatement ps=con.prepareStatement("insert into batches(courseName,startDate,duration,batchType,hoursPerDay,endDate) values (?,?,?,?,?,?)");
+			ps.setString(1, courseName);
+			java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+            ps.setDate(2, sqlStartDate);
+			ps.setInt(3, duration);
+			ps.setString(4, batchType);
+			ps.setInt(5, hoursPerDay);
+			java.sql.Date sqlendDate = new java.sql.Date(endDate.getTime());
+            ps.setDate(6, sqlendDate);
+            int count=ps.executeUpdate();
+			System.out.println(count);
+            
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
     }
     
-    	
-    }
+}
+    
+
+

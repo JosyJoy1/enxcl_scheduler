@@ -10,6 +10,12 @@
     <p>Course Name: <%= request.getAttribute("courseName") %></p>
     <p>Start Date: <%= request.getAttribute("startDate") %></p>
     <p>End Date: <%= request.getAttribute("endDate") %></p>
+    <div class="data-card">
+        <a href="SchedulerHome.jsp">
+            <h4>back</h4>
+            
+            </a>
+        </div>
 </body>
 
 </html>
