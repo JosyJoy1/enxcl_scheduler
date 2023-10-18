@@ -25,7 +25,7 @@
 <nav class="navigation">
     <a href="#">Home</a>
     <a href="#">About</a>
-    <a href="#">Services</a>
+    
     <a href="#">Contact</a>
    <a href="Login.jsp"><button class="btnlogin_popup">Login</button></a> 
 </nav>
